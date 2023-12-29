@@ -190,7 +190,7 @@ string ws_dirsToCoords(string dirs) {
 
 	int move = 0;
 
-	int[string] path; 
+	int[string] witchess_path; 
 
 	ws_matcher_rludConvert.reset(dirs);
 	while (ws_matcher_rludConvert.find()) {
@@ -229,7 +229,7 @@ string ws_dirsToCoords(string dirs) {
 			ws_throwErr("Error occurs at move " + move);
 			return "";
 		}
-		path[writeX + "," + writeY] = 0;
+		witchess_path[writeX + "," + writeY] = 0;
 	}
 
 	if (x != 0 || y != ws_puzzleDimX * 2) {
@@ -237,10 +237,10 @@ string ws_dirsToCoords(string dirs) {
 		ws_throwErr("dimX: " + ws_puzzleDimX + " dimY:" + ws_puzzleDimY);
 	}
 
-	sort path by index;
+	sort witchess_path by index;
 
 	string result = "";
-	foreach coord, val in path {
+	foreach coord, val in witchess_path {
 		result += "|" + coord;
 	}
 
